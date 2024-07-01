@@ -17,6 +17,18 @@ const Movie = db.define('Movie', {
     poster_path: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    director: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    cast: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    minimum_age: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }, {
     timestamps: false // Desactivar timestamps automáticos

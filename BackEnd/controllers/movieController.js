@@ -1,5 +1,5 @@
-const Movie = require('../models/Movie');
-const db = require('../database/conexion');  // Asegúrate de tener la conexión a la base de datos configurada correctamente
+const Movie = require('../models/movie');
+const db = require('../database/conexion');
 
 const getAllMovies = async (req, res) => {
     try {
@@ -12,13 +12,21 @@ const getAllMovies = async (req, res) => {
 
 const getMovieById = async (req, res) => {
     try {
-        const movie = await Movie.findByPk(req.params.id);
-        if (!movie) {
+        const movieId = req.params.id;
+        const [results, metadata] = await db.query('CALL GetMovieDetails(:movieId)', {
+            replacements: { movieId },
+            type: db.QueryTypes.SELECT
+        });
+
+        if (!results || results.length === 0) {
             return res.status(404).json({ error: 'Película no encontrada' });
         }
-        res.json(movie);
+
+        const movieDetails = results[0];
+        res.json(movieDetails);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error al obtener detalles de la película:', error);
+        res.status(500).json({ error: 'Error al obtener detalles de la película' });
     }
 };
 
