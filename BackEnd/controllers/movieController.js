@@ -1,9 +1,22 @@
 const Movie = require('../models/Movie');
+const db = require('../database/conexion');  // Asegúrate de tener la conexión a la base de datos configurada correctamente
 
 const getAllMovies = async (req, res) => {
     try {
         const movies = await Movie.findAll();
         res.json(movies);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+const getMovieById = async (req, res) => {
+    try {
+        const movie = await Movie.findByPk(req.params.id);
+        if (!movie) {
+            return res.status(404).json({ error: 'Película no encontrada' });
+        }
+        res.json(movie);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -48,18 +61,18 @@ const deleteMovie = async (req, res) => {
         const { id } = req.params;
         const deleted = await Movie.destroy({ where: { id } });
         if (deleted) {
-            res.status(204).json({ message: 'Movie deleted successfully' });
+            res.status(204).json({ message: 'Película eliminada exitosamente' });
         } else {
-            res.status(404).json({ error: 'Movie not found' });
+            res.status(404).json({ error: 'Película no encontrada' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-
 module.exports = {
     getAllMovies,
+    getMovieById,
     createMovie,
     updateMovie,
     deleteMovie,

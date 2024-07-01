@@ -2,8 +2,8 @@ POST http://localhost:3000/api/movies
 Content-Type: application/json
 
 {
-    "title": "Nueva Película",
+    "title": "Juan",
     "description": "Esta es una nueva película de prueba.",
     "release_date": "2023-01-01",
-    "poster_path": "../FrontEnd/assets/img/aclamada_1.jpg"
+    "poster_path": "../FrontEnd/assets/img/aclamada_3.jpg"
 }

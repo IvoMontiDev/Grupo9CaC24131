@@ -41,14 +41,7 @@
         <section id="tendencias" data-aos="fade-up" data-aos-offset="400" data-aos-delay="100" data-aos-duration="1000" class="peliculasTendencia">
             <h3 class="tituloSection">Las tendencias de hoy</h3>
             <div class="peliculas" id="tendenciasContainer">
-                <!-- Ejemplo de película -->
-                <div class="pelicula">
-                    <a href="./pages/detalle.html?id=1">
-                        <img src="./assets/img/pelicula1.jpg" alt="Película 1">
-                        <h3>Película 1</h3>
-                    </a>
-                </div>
-                <!-- Más películas aquí -->
+                <!-- Aquí se cargarán las películas desde el script -->
             </div>
             <button id="botonAnterior" class="boton anterior">Anterior</button>  
             <button id="botonSiguiente" class="boton siguiente">Siguiente</button>
@@ -80,7 +73,7 @@
     <script>
         AOS.init();
     </script>
-    <!-- Script para cargar películas desde un servidor de terceros y crear cada película en el DOM -->
+    <!-- Script para cargar películas desde tu servidor backend -->
     <script src="./js/cargar_peliculas_index.js"></script>
 </body>
 </html>
