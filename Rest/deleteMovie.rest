@@ -1,0 +1,7 @@
+DELETE http://localhost:3000/api/movies/2
+Content-Type: application/json
+
+{
+    "title": "Movie a eliminar",
+    "description": "Esta es una película que se eliminará de la base de datos."
+}

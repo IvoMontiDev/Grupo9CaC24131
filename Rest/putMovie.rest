@@ -1,0 +1,9 @@
+PUT http://localhost:3000/api/movies/1
+Content-Type: application/json
+
+{
+    "title": "Movie PUT",
+    "description": "Esta es una nueva película de prueba.",
+    "release_date": "2023-01-01",
+    "poster_path": "../FrontEnd/assets/img/aclamada_1.jpg"
+}
